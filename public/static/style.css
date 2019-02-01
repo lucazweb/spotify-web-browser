@@ -1,0 +1,94 @@
+* {
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.app-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+}
+.app-container .sidebar-component {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 100vh;
+  padding: 10px;
+  background: #333333;
+  color: white;
+}
+.app-container .sidebar-component nav.global-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.app-container .sidebar-component nav.global-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.app-container .sidebar-component nav.global-nav ul li {
+  width: 100%;
+  color: #cccccc;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+.app-container .sidebar-component .user-menu {
+  display: none;
+}
+.app-container .main-box {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 100vh;
+  background-image: linear-gradient(to left, #333333, #666666);
+}
+.app-container .main-box nav.search-selector {
+  display: flex;
+  width: 400px;
+  padding: 10px;
+  margin: auto;
+}
+.app-container .main-box nav.search-selector ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.app-container .main-box nav.search-selector ul li {
+  font-size: 1.2em;
+  color: #cccccc;
+  width: 100px;
+  border-bottom: 2px solid #669966;
+  text-align: center;
+  margin: 10px;
+  padding: 4px;
+}
+.app-container .main-box .search-component {
+  display: flex;
+  width: 100%;
+  height: 65px;
+  background: #333333;
+  padding: auto 6px;
+}
+.app-container .main-box .search-component input {
+  background: #000000;
+  border: 0;
+  width: 100%;
+  padding: 8px 10px;
+  color: #cccccc;
+  font-size: 1.5em;
+}
+.app-container .main-box .search-component input::placeholder {
+  color: #666;
+}
+
+/*# sourceMappingURL=style.css.map */

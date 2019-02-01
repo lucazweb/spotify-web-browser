@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar-component">
+            <div class="sidebar-header">Spotify Browser</div>
+            <nav class="global-nav">
+                <ul>
+                    <li>Buscar</li>
+                    <li>Sua Biblioteca</li>
+                </ul>
+            </nav>
+
+            <!-- Optional -->
+            <div class="user-menu">
+                <div class="user-button">
+                    <div class="user-image"></div>
+                    <span class="user-name"></span>
+                </div>
+            </div>
+        </div>
+        <div class="main-box">
+            <div class="search-component">
+                <input placeholder="Busque por artistas, albuns ou músicas" type="text" />
+            </div>
+            <div class="results-box">
+               <nav class="search-selector">
+                   <ul>
+                       <li>Artists</li>
+                       <li>Albuns</li>
+                       <li>Tracks</li>
+                   </ul>
+               </nav>
+               <!-- Album list -->
+               <div class="album-list">
+                   <ul>
+                       <li>
+                           <div class="album-image"></div>
+                           <div class="album-info">
+                               <h2>Album name</h2>
+                               <span>Artist</span>
+                               <div class="ratting"></div>
+                           </div>
+                    </li>
+                   </ul>
+               </div>
+
+               <!-- Artist list -->
+               <div class="artist-list">
+                   <ul>
+                       <li>
+                           <div class="artist-image"></div>
+                           <div class="artist-info">
+                               <h2>Artist</h2>
+                               <span>Artist Name</span>
+                           </div>
+                    </li>
+                   </ul>
+               </div>
+           
+               <!-- Album list -->
+               <div class="track-list">
+                   <ul>
+                       <li>
+                           <div class="track-image"></div>
+                           <div class="track-info">
+                               <h2>Album name</h2>
+                               <span>Artist</span>
+                               <div class="ratting"></div>
+                           </div>
+                    </li>
+                   </ul>
+               </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
