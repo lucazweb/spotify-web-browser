@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Sarabun:400,600');
+
 $cor-preta: #333333;
 $cor-preta-secundaria: #666666;
 $cor-branca: white;
 $cor-cinza: #cccccc;
 $cor-azul: #6699cc;
-$cor-verde: #669966;
+$cor-verde: #4caf50;
 *{
     outline: 0;
     box-sizing: border-box;
@@ -13,6 +15,14 @@ html, body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+}
+h1, h2, h3, h4, p, span, li{
+    font-family: 'Sarabun', sans-serif;
+}
+
+ul, li{
+    margin: 0;
+    padding: 0;
 }
 .app-container{
     display: flex;
@@ -28,6 +38,15 @@ html, body{
         padding:10px;
         background: $cor-preta;
         color: $cor-branca;
+        .sidebar-header{
+            display: flex;
+            width: 100%;
+            height: 50px;
+            font-weight: bold;
+            text-align: center;
+            align-items: center;
+            text-align: center;
+        }
         nav.global-nav{
             display: flex;
             flex-direction: column;
@@ -37,10 +56,15 @@ html, body{
                 padding: 0;
                 list-style: none;
                 li{
+                    cursor: pointer;
                     width: 100%;
                     color: $cor-cinza;
                     font-size: 1em;
                     margin-bottom: 10px;
+                    transition: all ease 0.4s;
+                    &:hover{
+                        color: $cor-branca;
+                    }
                 }
             }
         }
@@ -52,9 +76,12 @@ html, body{
     .main-box{
         display: flex;
         flex-direction: column;
+        flex-shrink: initial;
         width: 75%;
         height: 100vh;
         background-image: linear-gradient(to left, $cor-preta , $cor-preta-secundaria);
+        overflow-y: hidden;
+        overscroll-behavior-y: smoth;
         
         nav.search-selector{
             display: flex;
@@ -71,16 +98,21 @@ html, body{
                     font-size: 1.2em;
                     color: $cor-cinza;
                     width: 100px;
-                    border-bottom: 2px solid $cor-verde;
+                    border-bottom: 2px solid $cor-cinza;
                     text-align: center;
                     margin: 10px;
                     padding: 4px;
+                    font-weight: bold;
+                }
+                li.active{
+                    border-bottom: 2px solid $cor-verde;
                 }
             }
         }
         
         .search-component{
             display: flex;
+            flex:none;
             width: 100%;
             height: 65px;
             background: $cor-preta;
@@ -96,6 +128,70 @@ html, body{
                     color: #666;
                 }
 
+            }
+        }
+
+        .album-list{
+            display: flex;
+            width: 100%;
+            padding: 20px;
+            overflow-y: auto;
+            ul{
+                display: flex;
+                flex-wrap: wrap;
+                li{
+                    display: flex;
+                    flex-direction: column;
+                    width: 200px;
+                    margin: 10px;
+                    justify-content: center;
+                    .album-image{
+                        display: flex;
+                        position: relative;
+                        width: 100%;
+                        height: 200px;
+                        box-shadow: 1px 1px 3px $cor-preta;
+                        &:hover{
+                            .handle-favorite-button{
+                                display: flex;
+                                cursor: pointer;
+                            }
+                        }
+                        .handle-favorite-button{
+                            display: none;
+                            align-items: center;
+                            justify-content: center;
+                            position: absolute;
+                            width: 100%;
+                            height: 200px;
+                            top: 0;
+                            padding: 0;
+                            top: 0;
+                            left: 0;
+                            background: rgba(0, 0, 0, 0.6);
+                            z-index: 3000;
+                            color: $cor-branca;
+                            font-size: 6em;
+                        }
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .album-info{
+                        display: flex;
+                        flex-direction: column;
+                        text-align: center;
+                        h2{
+                            margin:0;
+                            padding: 0;
+                            color: $cor-cinza;
+                            font-size: 1.1em;
+                        }
+                        span{
+                            color: $cor-cinza;
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Sarabun:400,600");
 * {
   outline: 0;
   box-sizing: border-box;
@@ -7,6 +8,15 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+h1, h2, h3, h4, p, span, li {
+  font-family: "Sarabun", sans-serif;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
 }
 
 .app-container {
@@ -24,6 +34,15 @@ html, body {
   background: #333333;
   color: white;
 }
+.app-container .sidebar-component .sidebar-header {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  text-align: center;
+}
 .app-container .sidebar-component nav.global-nav {
   display: flex;
   flex-direction: column;
@@ -35,10 +54,15 @@ html, body {
   list-style: none;
 }
 .app-container .sidebar-component nav.global-nav ul li {
+  cursor: pointer;
   width: 100%;
   color: #cccccc;
   font-size: 1em;
   margin-bottom: 10px;
+  transition: all ease 0.4s;
+}
+.app-container .sidebar-component nav.global-nav ul li:hover {
+  color: white;
 }
 .app-container .sidebar-component .user-menu {
   display: none;
@@ -46,9 +70,12 @@ html, body {
 .app-container .main-box {
   display: flex;
   flex-direction: column;
+  flex-shrink: initial;
   width: 75%;
   height: 100vh;
   background-image: linear-gradient(to left, #333333, #666666);
+  overflow-y: hidden;
+  overscroll-behavior-y: smoth;
 }
 .app-container .main-box nav.search-selector {
   display: flex;
@@ -67,13 +94,18 @@ html, body {
   font-size: 1.2em;
   color: #cccccc;
   width: 100px;
-  border-bottom: 2px solid #669966;
+  border-bottom: 2px solid #cccccc;
   text-align: center;
   margin: 10px;
   padding: 4px;
+  font-weight: bold;
+}
+.app-container .main-box nav.search-selector ul li.active {
+  border-bottom: 2px solid #4caf50;
 }
 .app-container .main-box .search-component {
   display: flex;
+  flex: none;
   width: 100%;
   height: 65px;
   background: #333333;
@@ -89,6 +121,67 @@ html, body {
 }
 .app-container .main-box .search-component input::placeholder {
   color: #666;
+}
+.app-container .main-box .album-list {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+.app-container .main-box .album-list ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.app-container .main-box .album-list ul li {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 10px;
+  justify-content: center;
+}
+.app-container .main-box .album-list ul li .album-image {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  box-shadow: 1px 1px 3px #333333;
+}
+.app-container .main-box .album-list ul li .album-image:hover .handle-favorite-button {
+  display: flex;
+  cursor: pointer;
+}
+.app-container .main-box .album-list ul li .album-image .handle-favorite-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  top: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 3000;
+  color: white;
+  font-size: 6em;
+}
+.app-container .main-box .album-list ul li .album-image img {
+  width: 100%;
+}
+.app-container .main-box .album-list ul li .album-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.app-container .main-box .album-list ul li .album-info h2 {
+  margin: 0;
+  padding: 0;
+  color: #cccccc;
+  font-size: 1.1em;
+}
+.app-container .main-box .album-list ul li .album-info span {
+  color: #cccccc;
 }
 
 /*# sourceMappingURL=style.css.map */
