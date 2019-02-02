@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css?family=Sarabun:400,600');
+
+$cor-preta: #333333;
+$cor-preta-secundaria: #666666;
+$cor-branca: white;
+$cor-cinza: #cccccc;
+$cor-azul: #6699cc;
+$cor-verde: #4caf50;
+$cor-hot: #990000;
+$cor-cool: #ac63bb;
+$cor-regular: #ffd700;
+$cor-underground: #cccccc;
+
+/** BREAKPOINTS */
+// Smartphones
+$mq-smartphones-portrait-landscape: "only screen and (min-device-width : 320px) and (max-device-width : 1024px)";
+
+*{
+    outline: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+h1, h2, h3, h4, p, span, li{
+    font-family: 'Sarabun', sans-serif;
+}
+
+ul, li{
+    margin: 0;
+    padding: 0;
+}
+.app-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    // Sidebar component
+    .sidebar-component{
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        height: 100vh;
+        padding:10px;
+        background: $cor-preta;
+        color: $cor-branca;
+        @media #{$mq-smartphones-portrait-landscape} {
+            display: none;
+        }   
+        .sidebar-header{
+            display: flex;
+            width: 100%;
+            height: 50px;
+            font-weight: bold;
+            text-align: center;
+            align-items: center;
+            text-align: center;
+            h1{
+                text-align: center;
+            }
+        }
+        nav.global-nav{
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+            ul{
+                margin:0;
+                padding: 0;
+                list-style: none;
+                li{
+                    cursor: pointer;
+                    width: 100%;
+                    color: $cor-cinza;
+                    font-size: 1em;
+                    margin-bottom: 10px;
+                    transition: all ease 0.4s;
+                    &:hover{
+                        color: $cor-branca;
+                    }
+                    i{
+                        width: 25px;
+                    }
+                }
+            }
+        }
+        .user-menu{
+            display: none;
+        }
+    }
+
+    .main-box{
+        display: flex;
+        flex-direction: column;
+        flex-shrink: initial;
+        width: 75%;
+        height: 100vh;
+        background-image: linear-gradient(to left, $cor-preta , $cor-preta-secundaria);
+        overflow-y: hidden;
+        @media #{$mq-smartphones-portrait-landscape} {
+            width: 100%;
+        }   
+        
+        nav.search-selector{
+            display: flex;
+            width: 400px;
+            padding: 10px;
+            margin:auto;
+            ul{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                li{
+                    font-size: 1.2em;
+                    color: $cor-branca;
+                    width: 100px;
+                    border-bottom: 2px solid $cor-branca;
+                    text-align: center;
+                    margin: 10px;
+                    padding: 4px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all ease 0.3s;
+                    &:hover{
+                        color: $cor-verde;
+                        border-bottom: 2px solid $cor-verde;
+                    }
+                }
+                li.active{
+                    border-bottom: 2px solid $cor-verde;
+                }
+            }
+        }
+        
+        .search-component{
+            display: flex;
+            flex:none;
+            width: 100%;
+            height: 65px;
+            background: $cor-preta;
+            padding: auto 6px;
+            @media #{$mq-smartphones-portrait-landscape} {
+                margin: 10px auto;
+                width: 95%;
+            }                                      
+            input{
+                background: #000000;
+                border: 0;
+                width: 100%;
+                padding: 8px 10px;
+                color: $cor-cinza;
+                font-size: 1.5em;
+                &::placeholder{
+                    color: #666;
+                    @media #{$mq-smartphones-portrait-landscape} {
+                        font-size: 0.8em;
+                    }                                              
+                }
+
+            }
+        }
+
+        .album-list, .artists-list{
+            display: flex;
+            width: 100%;
+            height: 80vh;
+            padding: 0px 20px;
+            overflow: hidden;
+            @media #{$mq-smartphones-portrait-landscape} {
+                height: 80vh;
+                overflow-y: auto;
+            }
+            ul{
+                display: flex;
+                flex-wrap: wrap;
+                @media #{$mq-smartphones-portrait-landscape} {
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100vh;
+                    overflow-y: auto;
+                }                   
+                li{
+                    display: flex;
+                    flex-direction: column;
+                    width: 200px;
+                    height: 230px;
+                    margin: 10px auto;
+                    justify-content: center;
+                    @media #{$mq-smartphones-portrait-landscape} {
+                        width: 95%;
+                        height: 380px;
+                    }                       
+                    .album-image{
+                        display: flex;
+                        position: relative;
+                        width: 100%;
+                        height: 350px;
+                        box-shadow: 1px 1px 3px $cor-preta;
+                        &:hover{
+                            .handle-favorite-button{
+                                display: flex;
+                                flex-direction: column;
+                                cursor: pointer;
+                                color: $cor-verde;
+                                font-size: 0.9em;
+                                i{
+                                 font-size: 1.6em;
+                                 margin-bottom: 10px;
+                                }
+                            }
+                        }
+                        @media #{$mq-smartphones-portrait-landscape} {
+                            width: 100%;
+                            height: 350px;
+                        }                          
+                        
+                        .handle-favorite-button{
+                            display: none;
+                            align-items: center;
+                            justify-content: center;
+                            position: absolute;
+                            width: 100%;
+                            height: 200px;
+                            top: 0;
+                            padding: 0;
+                            top: 0;
+                            left: 0;
+                            background: rgba(0, 0, 0, 0.8);
+                            z-index: 3000;
+                            color: $cor-branca;
+                            font-size: 6em;
+                        }
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .album-info{
+                        display: flex;
+                        flex-direction: column;
+                        text-align: center;
+                        h2{
+                            margin:0;
+                            padding: 0;
+                            color: $cor-branca;
+                            font-size: 1em;
+                            @media #{$mq-smartphones-portrait-landscape} {
+                                font-size: 1.1em;
+                            }                                 
+                        }
+                        span{
+                            color: $cor-branca;
+                            font-size: 0.8em;
+                            @media #{$mq-smartphones-portrait-landscape} {
+                                font-size: 1em;
+                            }                               
+                        }
+                        span.rating{
+                            font-size:0.8em;
+                            @media #{$mq-smartphones-portrait-landscape} {
+                                font-size: 1.2em;
+                            }   
+                        }
+                        span.rating.hot{
+                            color: $cor-hot;
+                        }
+                        span.rating.cool{
+                            color: $cor-cool;
+                        }
+                        span.rating.regular{
+                            color: $cor-regular;
+                        }
+                        span.rating.underground{
+                            color: $cor-underground;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        // Ends Album list style
+
+        .artists-list{
+            ul{
+                flex-direction: row !important;
+                li{
+                    width: 40%;
+                    height: 120px;
+                    flex-direction: row !important;
+                    justify-content: flex-start;
+                    
+                    .album-image{
+                        width: 30%;
+                        height: 110px;
+                        box-shadow: none !important;
+                        overflow: hidden;
+                        img{
+                            border-radius: 100%;
+                        }
+                    }
+                    .album-info{
+                        padding-left: 10px;
+                        justify-content: flex-start;
+                        text-align: left;
+                        h2{
+                            margin-bottom: 4px;
+                        }
+                        span{
+                            margin-bottom: 3px;
+                        }
+                        .genres{
+                            color: $cor-cinza;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
