@@ -6,7 +6,7 @@ const Sidebar = () => (
     <nav className="global-nav">
         <ul>
             <li><i className="fas fa-search"></i> Search</li>
-            <li><i className="fas fa-star"></i> Your Library</li>
+            <li><i className="fas fa-star"></i> Favorites</li>
             <li><i className="fas fa-sign-out-alt"></i> Logout</li>
         </ul>
     </nav>

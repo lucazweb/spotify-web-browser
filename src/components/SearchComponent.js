@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as searchActions from '../store/actions/search';
+import { bindActionCreators } from 'redux';
 
-const SearchComponent = () => (
-
+const SearchComponent = ({...props}) => (
   <div className="main-box">
     <div className="search-component">
-        <input placeholder="Search for Artists, Albuns or Tracks" type="text" />
+        <input onKeyPress={(e) => props.searchRequest({q: e.target.value, filter: props.filter}) } placeholder="Search for Artists, Albuns or Tracks" type="text" />
     </div>
     <div className="results-box">
       <nav className="search-selector">
@@ -36,4 +38,10 @@ const SearchComponent = () => (
   </div>
 );
 
-export default SearchComponent;
+const mapStateToProps = (state) => ({
+  filter: state.search.filter,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(searchActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps )(SearchComponent);

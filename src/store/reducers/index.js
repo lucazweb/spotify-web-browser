@@ -1,20 +1,5 @@
 import { combineReducers } from 'redux';
-
-const INITIAL_STATE = {
-    search: {}
-}
-
-const search = function (state = INITIAL_STATE, action){
-    
-    switch(action.type){
-        case  'LOGIN_REQUEST':
-          console.log(state, action.payload.token);
-          return state;
-
-        default:
-            return state;
-    }
-}
+import search from './search';
 
 export default combineReducers({
     search,

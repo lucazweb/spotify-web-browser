@@ -1,30 +1,43 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router,  Route, Redirect } from 'react-router-dom';
+import { Router,  Route, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as searchActions from '../store/actions/search';
+import createBrowserHistory from 'history/createBrowserHistory';
 import LoginView from '../views/LoginView'
 import Home from '../views/Home';
 import api from '../services/api';
-class Wrapper extends Component {
 
+const history = createBrowserHistory();
+
+class Wrapper extends Component {
     componentDidMount(){
       const params = this.getHashParams();
       const token = params.access_token;
       this.props.loginRequest(token);
-      this.signInAuthorized();
-
+      this.auth(token);
+      this.isLogged();
     };
 
-    auth(){
-      api.get(`/me`, {
-        headers: new Headers({
-          Authorization: `Bearer ${this.state.token}`,
-        }),        
-      }).then((res) => {
-        console.log(res);
-      })
+    auth(token){
+      try{
+        api.get(`/me?access_token=${token}`)
+          .then((res) => {
+            sessionStorage.setItem('x-access-token', token);
+            history.push('/home');
+          });
+      } catch(e){
+        console.log(e);
+      }
     };
+
+    isLogged(){
+      if(sessionStorage.getItem('x-access-token') !== null){
+        return true;
+      }else {
+        return false;
+      }
+    }
 
     getHashParams = () => {
       const hashParams = {};
@@ -39,18 +52,12 @@ class Wrapper extends Component {
       return hashParams;
     };
 
-    signInAuthorized = () => {
-      console.log('Autorizado');
-
-     return (<Redirect to='/home' />);
-    }
-
     render (){
         return (
-            <Router>
+            <Router history={history}>
               <Fragment>
                 <Route path='/' exact component={LoginView} />
-                <Route path='/home' component={Home} />
+                <Route path='/home' render={() => this.isLogged() ? <Home /> : <Redirect to='/' /> } />
               </Fragment>
             </Router>
         )
