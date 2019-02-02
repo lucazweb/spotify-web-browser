@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Sarabun:400,600");
+/** BREAKPOINTS */
 * {
   outline: 0;
   box-sizing: border-box;
@@ -34,6 +35,11 @@ ul, li {
   background: #333333;
   color: white;
 }
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .sidebar-component {
+    display: none;
+  }
+}
 .app-container .sidebar-component .sidebar-header {
   display: flex;
   width: 100%;
@@ -41,6 +47,9 @@ ul, li {
   font-weight: bold;
   text-align: center;
   align-items: center;
+  text-align: center;
+}
+.app-container .sidebar-component .sidebar-header h1 {
   text-align: center;
 }
 .app-container .sidebar-component nav.global-nav {
@@ -64,6 +73,9 @@ ul, li {
 .app-container .sidebar-component nav.global-nav ul li:hover {
   color: white;
 }
+.app-container .sidebar-component nav.global-nav ul li i {
+  width: 25px;
+}
 .app-container .sidebar-component .user-menu {
   display: none;
 }
@@ -75,7 +87,11 @@ ul, li {
   height: 100vh;
   background-image: linear-gradient(to left, #333333, #666666);
   overflow-y: hidden;
-  overscroll-behavior-y: smoth;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box {
+    width: 100%;
+  }
 }
 .app-container .main-box nav.search-selector {
   display: flex;
@@ -92,13 +108,19 @@ ul, li {
 }
 .app-container .main-box nav.search-selector ul li {
   font-size: 1.2em;
-  color: #cccccc;
+  color: white;
   width: 100px;
-  border-bottom: 2px solid #cccccc;
+  border-bottom: 2px solid white;
   text-align: center;
   margin: 10px;
   padding: 4px;
   font-weight: bold;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.app-container .main-box nav.search-selector ul li:hover {
+  color: #4caf50;
+  border-bottom: 2px solid #4caf50;
 }
 .app-container .main-box nav.search-selector ul li.active {
   border-bottom: 2px solid #4caf50;
@@ -111,6 +133,12 @@ ul, li {
   background: #333333;
   padding: auto 6px;
 }
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .search-component {
+    margin: 10px auto;
+    width: 95%;
+  }
+}
 .app-container .main-box .search-component input {
   background: #000000;
   border: 0;
@@ -122,35 +150,76 @@ ul, li {
 .app-container .main-box .search-component input::placeholder {
   color: #666;
 }
-.app-container .main-box .album-list {
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .search-component input::placeholder {
+    font-size: 0.8em;
+  }
+}
+.app-container .main-box .album-list, .app-container .main-box .artists-list {
   display: flex;
   width: 100%;
-  padding: 20px;
-  overflow-y: auto;
+  height: 80vh;
+  padding: 0px 20px;
+  overflow: hidden;
 }
-.app-container .main-box .album-list ul {
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .album-list, .app-container .main-box .artists-list {
+    height: 80vh;
+    overflow-y: auto;
+  }
+}
+.app-container .main-box .album-list ul, .app-container .main-box .artists-list ul {
   display: flex;
   flex-wrap: wrap;
 }
-.app-container .main-box .album-list ul li {
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .album-list ul, .app-container .main-box .artists-list ul {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+.app-container .main-box .album-list ul li, .app-container .main-box .artists-list ul li {
   display: flex;
   flex-direction: column;
   width: 200px;
-  margin: 10px;
+  height: 230px;
+  margin: 10px auto;
   justify-content: center;
 }
-.app-container .main-box .album-list ul li .album-image {
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .album-list ul li, .app-container .main-box .artists-list ul li {
+    width: 95%;
+    height: 380px;
+  }
+}
+.app-container .main-box .album-list ul li .album-image, .app-container .main-box .artists-list ul li .album-image {
   display: flex;
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 350px;
   box-shadow: 1px 1px 3px #333333;
 }
-.app-container .main-box .album-list ul li .album-image:hover .handle-favorite-button {
+.app-container .main-box .album-list ul li .album-image:hover .handle-favorite-button, .app-container .main-box .artists-list ul li .album-image:hover .handle-favorite-button {
   display: flex;
+  flex-direction: column;
   cursor: pointer;
+  color: #4caf50;
+  font-size: 0.9em;
 }
-.app-container .main-box .album-list ul li .album-image .handle-favorite-button {
+.app-container .main-box .album-list ul li .album-image:hover .handle-favorite-button i, .app-container .main-box .artists-list ul li .album-image:hover .handle-favorite-button i {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .album-list ul li .album-image, .app-container .main-box .artists-list ul li .album-image {
+    width: 100%;
+    height: 350px;
+  }
+}
+.app-container .main-box .album-list ul li .album-image .handle-favorite-button, .app-container .main-box .artists-list ul li .album-image .handle-favorite-button {
   display: none;
   align-items: center;
   justify-content: center;
@@ -161,26 +230,89 @@ ul, li {
   padding: 0;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 3000;
   color: white;
   font-size: 6em;
 }
-.app-container .main-box .album-list ul li .album-image img {
+.app-container .main-box .album-list ul li .album-image img, .app-container .main-box .artists-list ul li .album-image img {
   width: 100%;
 }
-.app-container .main-box .album-list ul li .album-info {
+.app-container .main-box .album-list ul li .album-info, .app-container .main-box .artists-list ul li .album-info {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
-.app-container .main-box .album-list ul li .album-info h2 {
+.app-container .main-box .album-list ul li .album-info h2, .app-container .main-box .artists-list ul li .album-info h2 {
   margin: 0;
   padding: 0;
-  color: #cccccc;
-  font-size: 1.1em;
+  color: white;
+  font-size: 1em;
 }
-.app-container .main-box .album-list ul li .album-info span {
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .album-list ul li .album-info h2, .app-container .main-box .artists-list ul li .album-info h2 {
+    font-size: 1.1em;
+  }
+}
+.app-container .main-box .album-list ul li .album-info span, .app-container .main-box .artists-list ul li .album-info span {
+  color: white;
+  font-size: 0.8em;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .album-list ul li .album-info span, .app-container .main-box .artists-list ul li .album-info span {
+    font-size: 1em;
+  }
+}
+.app-container .main-box .album-list ul li .album-info span.rating, .app-container .main-box .artists-list ul li .album-info span.rating {
+  font-size: 0.8em;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
+  .app-container .main-box .album-list ul li .album-info span.rating, .app-container .main-box .artists-list ul li .album-info span.rating {
+    font-size: 1.2em;
+  }
+}
+.app-container .main-box .album-list ul li .album-info span.rating.hot, .app-container .main-box .artists-list ul li .album-info span.rating.hot {
+  color: #990000;
+}
+.app-container .main-box .album-list ul li .album-info span.rating.cool, .app-container .main-box .artists-list ul li .album-info span.rating.cool {
+  color: #ac63bb;
+}
+.app-container .main-box .album-list ul li .album-info span.rating.regular, .app-container .main-box .artists-list ul li .album-info span.rating.regular {
+  color: #ffd700;
+}
+.app-container .main-box .album-list ul li .album-info span.rating.underground, .app-container .main-box .artists-list ul li .album-info span.rating.underground {
+  color: #cccccc;
+}
+.app-container .main-box .artists-list ul {
+  flex-direction: row !important;
+}
+.app-container .main-box .artists-list ul li {
+  width: 40%;
+  height: 120px;
+  flex-direction: row !important;
+  justify-content: flex-start;
+}
+.app-container .main-box .artists-list ul li .album-image {
+  width: 30%;
+  height: 110px;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+.app-container .main-box .artists-list ul li .album-image img {
+  border-radius: 100%;
+}
+.app-container .main-box .artists-list ul li .album-info {
+  padding-left: 10px;
+  justify-content: flex-start;
+  text-align: left;
+}
+.app-container .main-box .artists-list ul li .album-info h2 {
+  margin-bottom: 4px;
+}
+.app-container .main-box .artists-list ul li .album-info span {
+  margin-bottom: 3px;
+}
+.app-container .main-box .artists-list ul li .album-info .genres {
   color: #cccccc;
 }
 

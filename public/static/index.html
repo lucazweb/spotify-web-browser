@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
     <div class="app-container">
         <div class="sidebar-component">
-            <div class="sidebar-header">Spotify Browser</div>
+            <div class="sidebar-header"><h1>Spotify Browser</h1></div>
             <nav class="global-nav">
                 <ul>
-                    <li>Buscar</li>
-                    <li>Sua Biblioteca</li>
+                    <li><i class="fas fa-search"></i> Search</li>
+                    <li><i class="fas fa-star"></i> Your Library</li>
+                    <li><i class="fas fa-sign-out-alt"></i> Logout</li>
                 </ul>
             </nav>
 
@@ -28,7 +30,7 @@
         </div>
         <div class="main-box">
             <div class="search-component">
-                <input placeholder="Busque por artistas, albuns ou músicas" type="text" />
+                <input placeholder="Search for Artists, Albuns or Tracks" type="text" />
             </div>
             <div class="results-box">
                <nav class="search-selector">
@@ -39,118 +41,190 @@
                    </ul>
                </nav>
                <!-- Album list -->
-               <div class="album-list">
+               <div style="display:none" class="album-list">
                    <ul>
                        <li>
                            <div class="album-image">
-                               <div class="handle-favorite-button"> * </div>
+                               <div class="handle-favorite-button">
+                                   <i class="fas fa-star"></i> 
+                                   <span> Add as Favorite</span>
+                                </div>
                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
                            </div>
                            <div class="album-info">
                                <h2>Lighting Bold</h2>
                                <span>Perl Jam</span>
-                               <div class="ratting"></div>
+                               <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
                            </div>
                         </li>
                        <li>
                            <div class="album-image">
+                               <div class="handle-favorite-button"><i class="fas fa-star"></i> </div>
                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
                            </div>
                            <div class="album-info">
                                <h2>Lighting Bold</h2>
                                <span>Perl Jam</span>
-                               <div class="ratting"></div>
+                               <span class="rating cool"><i class="fas fa-heart"></i> Cool</span>
                            </div>
                         </li>
                        <li>
                            <div class="album-image">
+                               <div class="handle-favorite-button"><i class="fas fa-star"></i> </div>
                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
                            </div>
                            <div class="album-info">
                                <h2>Lighting Bold</h2>
                                <span>Perl Jam</span>
-                               <div class="ratting"></div>
+                               <span class="rating regular"> <i class="fas fa-thumbs-up"></i> Regular</span>
                            </div>
                         </li>
                        <li>
                            <div class="album-image">
+                               <div class="handle-favorite-button"><i class="fas fa-star"></i> </div>
                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
                            </div>
                            <div class="album-info">
                                <h2>Lighting Bold</h2>
                                <span>Perl Jam</span>
-                               <div class="ratting"></div>
+                               <span class="rating underground"> <i class="fas fa-meh-blank"></i> Regular</span>
                            </div>
                         </li>
                        <li>
                            <div class="album-image">
+                               <div class="handle-favorite-button"><i class="fas fa-star"></i> </div>
                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
                            </div>
                            <div class="album-info">
                                <h2>Lighting Bold</h2>
                                <span>Perl Jam</span>
-                               <div class="ratting"></div>
+                               <span class="rating">Regular</span>
                            </div>
                         </li>
                        <li>
                            <div class="album-image">
+                               <div class="handle-favorite-button"><i class="fas fa-star"></i> </div>
                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
                            </div>
                            <div class="album-info">
                                <h2>Lighting Bold</h2>
                                <span>Perl Jam</span>
-                               <div class="ratting"></div>
+                               <span class="rating">Regular</span>
                            </div>
                         </li>
                        <li>
                            <div class="album-image">
+                               <div class="handle-favorite-button"><i class="fas fa-star"></i> </div>
                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
                            </div>
                            <div class="album-info">
                                <h2>Lighting Bold</h2>
                                <span>Perl Jam</span>
-                               <div class="ratting"></div>
+                               <span class="rating">Regular</span>
                            </div>
                         </li>
                        <li>
                            <div class="album-image">
+                               <div class="handle-favorite-button"><i class="fas fa-star"></i> </div>
                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
                            </div>
                            <div class="album-info">
                                <h2>Lighting Bold</h2>
                                <span>Perl Jam</span>
-                               <div class="ratting"></div>
+                               <span class="rating">Regular</span>
                            </div>
                         </li>
+                        
                    </ul>
                </div>
-
                <!-- Artist list -->
-               <div class="artist-list">
-                   <ul>
-                       <li>
-                           <div class="artist-image"></div>
-                           <div class="artist-info">
-                               <h2>Artist</h2>
-                               <span>Artist Name</span>
-                           </div>
-                    </li>
-                   </ul>
-               </div>
-           
-               <!-- Album list -->
-               <div class="track-list">
-                   <ul>
-                       <li>
-                           <div class="track-image"></div>
-                           <div class="track-info">
-                               <h2>Album name</h2>
-                               <span>Artist</span>
-                               <div class="ratting"></div>
-                           </div>
-                    </li>
-                   </ul>
-               </div>
+               <div class="artists-list">
+                    <ul>
+                        <li>
+                            <div class="album-image">
+                                <img src="https://articlebio.com/uploads/bio/2017/07/14/chris-cornell.jpg" />
+                            </div>
+                            <div class="album-info">
+                                <h2>Lighting Bold</h2>
+                                <span>Perl Jam</span>
+                                <span class="genres">Rock, Pop Rock, Chill, Hardcore, New Age</span>
+                                <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="album-image">
+                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
+                            </div>
+                            <div class="album-info">
+                                <h2>Lighting Bold</h2>
+                                <span>Perl Jam</span>
+                                <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="album-image">
+                                <img src="https://articlebio.com/uploads/bio/2017/07/14/chris-cornell.jpg" />
+                            </div>
+                            <div class="album-info">
+                                <h2>Lighting Bold</h2>
+                                <span>Perl Jam</span>
+                                <span class="genres">Rock, Pop Rock, Chill, Hardcore, New Age</span>
+                                <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="album-image">
+                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
+                            </div>
+                            <div class="album-info">
+                                <h2>Lighting Bold</h2>
+                                <span>Perl Jam</span>
+                                <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="album-image">
+                                <img src="https://articlebio.com/uploads/bio/2017/07/14/chris-cornell.jpg" />
+                            </div>
+                            <div class="album-info">
+                                <h2>Lighting Bold</h2>
+                                <span>Perl Jam</span>
+                                <span class="genres">Rock, Pop Rock, Chill, Hardcore, New Age</span>
+                                <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="album-image">
+                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
+                            </div>
+                            <div class="album-info">
+                                <h2>Lighting Bold</h2>
+                                <span>Perl Jam</span>
+                                <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="album-image">
+                                <img src="https://articlebio.com/uploads/bio/2017/07/14/chris-cornell.jpg" />
+                            </div>
+                            <div class="album-info">
+                                <h2>Lighting Bold</h2>
+                                <span>Perl Jam</span>
+                                <span class="genres">Rock, Pop Rock, Chill, Hardcore, New Age</span>
+                                <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="album-image">
+                                <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
+                            </div>
+                            <div class="album-info">
+                                <h2>Lighting Bold</h2>
+                                <span>Perl Jam</span>
+                                <span class="rating hot"><i class="fas fa-fire"></i></i> Hot</span>
+                            </div>
+                        </li>
+                    </ul>
             </div>
         </div>
     </div>
