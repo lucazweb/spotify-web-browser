@@ -1,36 +1,49 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as searchActions from '../store/actions/search';
+import FavAlbumList from './FavAlbumList';
+import FavArtistsList from './FavArtistList';
+import FavTrackList from './FavArtistList';
 
-const Favorites = () => (
+const handleFavoriteFilter = () => {
 
-  <div className="main-box">
+}
+
+const FavoritesComponent = ({...props}) => (
+  <div className="main-box main-box__favorites">
     <div className="results-box">
       <nav className="search-selector">
           <ul>
-              <li className="active">Artists</li>
-              <li>Albuns</li>
-              <li>Tracks</li>
+            <li onClick={() => props.changeFilter('artist')} className={props.filter === 'artist' ? 'active' : ''}>Artists</li>
+            <li onClick={() => props.changeFilter('album')} className={props.filter === 'album' ? 'active' : ''}>Albuns</li>
+            <li onClick={() => props.changeFilter('track')} className={props.filter === 'track' ? 'active' : ''} >Tracks</li>
           </ul>
       </nav>
-      <div className="album-list">
-        <ul>
-            <li>
-                <div className="album-image">
-                    <div className="handle-favorite-button">
-                        <i className="fas fa-star"></i> 
-                        <span> Add as Favorite</span>
-                      </div>
-                    <img src="https://downloads-pearljam-com.s3.amazonaws.com/img/album-art/1463090805020c40c2530cde7fe2b6e223731e7c10.jpg" />
-                </div>
-                <div className="album-info">
-                    <h2>Lighting Bold</h2>
-                    <span>Perl Jam</span>
-                    <span className="rating hot"><i className="fas fa-fire"></i>Hot</span>
-                </div>
-            </li>                
-        </ul>
-      </div>
+
+      {
+        props.filter === 'artist' && (<FavArtistsList favorites={props.favorites} />)
+      }
+
+      {
+        props.filter === 'album' && (<FavAlbumList favorites={props.favorites} />)
+      }
+
+      {
+        props.filter === 'track' && (<FavTrackList favorites={props.favorites} />)
+      }
     </div>  
   </div>
 );
 
-export default Favorites;
+const mapStateToProps = function(state){
+  console.log(state);
+  return{
+    favorites: state.search.favorites,
+    filter: state.search.filter,
+  }
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators(searchActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritesComponent);

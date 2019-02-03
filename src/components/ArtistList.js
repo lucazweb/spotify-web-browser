@@ -45,8 +45,8 @@ const ArtistList = ({...props}) => (
     <ul>
       {
         ((props.data.artists !== undefined)) ? props.data.artists.items.map(artirst => (
-          <li>
-          <Link to='/artist' onClick={() => props.selectArtistReq(artirst.id)} key={artirst.id} >
+          <li key={artirst.id}>
+          <Link to='/artist' onClick={() => props.selectArtistReq(artirst.id)}>
             {
               artirst.images[0] ? 
               (handleArtirstImage(artirst.images[0].url))

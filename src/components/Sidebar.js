@@ -14,7 +14,7 @@ const Sidebar = () => (
     <nav className="global-nav">
         <ul>
             <li><Link to='/home'><FontAwesomeIcon icon={faSearch} /> Search</Link></li>
-            <li><FontAwesomeIcon icon={faStar} /> Favorites</li>
+            <li><Link to='/favorites'><FontAwesomeIcon icon={faStar} /> Favorites</Link> </li>
             <li onClick={() => handleSessionEnd()}><FontAwesomeIcon icon={faSignOutAlt} /> Logout</li>
         </ul>
     </nav>

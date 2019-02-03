@@ -38,6 +38,21 @@ export const selectArtistFailure = error => ({
     payload: { error },
 });
 
+export const selectAlbumReq = data => ({
+    type: 'SELECT_ALBUM_REQUEST',
+    payload: { data },
+});
+
+export const selectAlbumSuccess = data => ({
+    type: 'SELECT_ALBUM_SUCCESS',
+    payload: { data },
+});
+
+export const selectAlbumFailure = error => ({
+    type: 'SELECT_ALBUM_FAILURE',
+    payload: { error },
+});
+
 export const addAsFavorite = data => ({
     type: 'ADD_AS_FAVORITE',
     payload: { data },

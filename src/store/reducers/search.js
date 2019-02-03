@@ -1,13 +1,50 @@
+
+const handleFavoritesPersistence = () => {
+  if(localStorage.getItem('web-spotify-favorites')){
+    return JSON.parse(localStorage.getItem('web-spotify-favorites'));
+  } else {
+    return {
+      artists: [],
+      albuns: [],
+      tracks: [],
+    }
+  }
+}
+
+const FAVORITES = handleFavoritesPersistence();
+
 const INITIAL_STATE = {
   search: {},
   filter: 'artist',
   data: [],
   selectedArtist: {},
   selectedAlbum: {},
-  favorites: {
-    artists: [],
-    albuns: [],
-  },
+  favorites: FAVORITES,
+}
+
+const handleFavorites = (payload, state) => {
+  console.log('handleFavorites', payload.type);
+
+  if(payload.type = 'artist'){
+    if( (state.favorites.artists.find(artist => artist.id === payload.favorite.id)) === undefined){
+      let newState = {...state, favorites: {...state.favorites, artists: [...state.favorites.artists, payload.favorite]}}
+      
+      if(sessionStorage.getItem('web-spotify-favorites')){
+        console.log('Existe');
+      }else {
+        localStorage.setItem('web-spotify-favorites', JSON.stringify(newState.favorites));
+      }
+
+      return newState;
+    } else {
+      return state; // Informar que o artista já foi selecionado
+    }
+  } 
+  
+  if(payload.type = 'album'){
+    return {...state, favorites: {...state.favorites, albuns: [...state.favorites.albuns, payload.favorite]}} 
+  }
+
 }
 
 export default function (state = INITIAL_STATE, action){
@@ -41,14 +78,21 @@ export default function (state = INITIAL_STATE, action){
         console.log(action.payload.data);
         return state;
 
+      case  'SELECT_ALBUM_REQUEST':
+        console.log(action.payload.data);
+        return state;
+
+      case  'SELECT_ALBUM_SUCCESS':
+        console.log(action.payload.data);
+        return {...state, selectedAlbum: action.payload.data}
+
+      case  'SELECT_ALBUM_FAILURE':
+        console.log(action.payload.data);
+        return state;
+
       case 'ADD_AS_FAVORITE':
         console.log(action.payload.data);
-        if(action.payload.data.type = 'artist'){
-          return {...state, favorites: {...state.favorites, artists: [...state.favorites.artists, action.payload.data.favorite]}}
-        } else if(action.payload.data.type = 'album'){
-          return {...state, favorites: {...state.favorites, albuns: [...state.favorites.albuns, action.payload.data.favorite]}} 
-        }
-        return state;
+        return handleFavorites(action.payload.data, state)
 
       default:
           return state;

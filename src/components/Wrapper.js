@@ -7,6 +7,8 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import LoginView from '../views/LoginView'
 import Home from '../views/Home';
 import Artist from '../views/Artist';
+import Album from '../views/Album';
+import Favorites from '../views/Favorites';
 import api from '../services/api';
 
 const history = createBrowserHistory();
@@ -15,21 +17,24 @@ class Wrapper extends Component {
     componentDidMount(){
       const params = this.getHashParams();
       const token = params.access_token;
-      console.log(token);
-      this.props.loginRequest(token);
-      this.auth(token);
-      this.isLogged();
+      if(token !== null){
+        //this.props.loginRequest(token);
+        this.auth(token);
+        this.isLogged();
+      }
     };
 
     auth(token){
-      try{
-        api.get(`/me?access_token=${token}`)
-          .then((res) => {
-            sessionStorage.setItem('x-access-token', token);
-            history.push('/home');
-          });
-      } catch(e){
-        console.log(e);
+      if(token){
+        try{
+          api.get(`/me?access_token=${token}`)
+            .then((res) => {
+              sessionStorage.setItem('x-access-token', token);
+              history.push('/home');
+            });
+        } catch(e){
+          console.log(e);
+        }
       }
     };
 
@@ -39,7 +44,7 @@ class Wrapper extends Component {
       }else {
         return false;
       }
-    }
+    };
 
     getHashParams = () => {
       const hashParams = {};
@@ -60,7 +65,9 @@ class Wrapper extends Component {
               <Fragment>
                 <Route path='/' exact component={LoginView} />
                 <Route path='/home' render={() => this.isLogged() ? <Home /> : <Redirect to='/' /> } />
-                <Route path='/artist' component={Artist} />       
+                <Route path='/artist' component={Artist} />
+                <Route path='/album' component={Album} />
+                <Route path='/favorites' component={Favorites} />
               </Fragment>
             </Router>
         )
