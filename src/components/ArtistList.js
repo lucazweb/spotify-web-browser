@@ -28,7 +28,6 @@ const handlePopularity = (popularity) => {
 const unknowAvatar = './assets/unknow.jpg';
 
 const handleArtirstImage = (url) => {
-  console.log(url);
   return (<div className="album-image" style={{backgroundImage: `url(${url})`}}></div>)
 };
 

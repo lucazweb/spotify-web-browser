@@ -11,22 +11,19 @@ const handleArtists = (arr, artist, index) => {
   }
 }
 
+const handleTrackImage = (url) => {
+  return (<div className="album-image album-image__cover" style={{backgroundImage: `url(${url})`}}></div>)
+};
+
 const TrackList = ({...props}) => (
-  <div className="album-list">
+  <div className="album-list track-list-fix">
   <ul>
     {
       ((props.data.tracks !== undefined)) ? ( props.data.tracks.items.map(track => (
         <li>
-          <div className="album-image">
-              <div className="handle-favorite-button">
-                <i className="fas fa-star"></i> 
-                <span> Add as Favorite</span>
-              </div>
-              {
-                track.album.images && (<img alt="static" src={track.album.images[0].url} />)
-              }
-              
-          </div>
+            {
+              track.album.images ? handleTrackImage(track.album.images[0].url) : (<img alt="static" src={track.album.images[0].url} />)
+            } 
           <div className="album-info">
               <h2>{track.name}</h2>
               {

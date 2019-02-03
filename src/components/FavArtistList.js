@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMehBlank, faHeart, faFire, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faMehBlank, faHeart, faFire, faThumbsUp, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const handlePopularity = (popularity) => {
   if(popularity < 30){
@@ -19,7 +19,6 @@ const handlePopularity = (popularity) => {
   return (<span className="rating hot"><FontAwesomeIcon icon={faFire}/> Hot</span>)
  }
 
-
 const handleArtirstImage = (url) => {
   return (<div className="album-image album-image__cover artist-image" style={{backgroundImage: `url(${url})`}}></div>)
 };
@@ -30,7 +29,7 @@ const FavArtistList = ({...props}) => (
     {
       props.favorites.artists.length > 0 ? props.favorites.artists.map(artist => (
         <li>
-         
+          <div onClick={() => props.remove({id: artist.id, type: 'artist'})} class="remove-button"> <FontAwesomeIcon icon={faTimes}/> </div>
           {
             artist.images ? (handleArtirstImage(artist.images[0].url)) : (<span> Sem imagem</span>)
           }

@@ -8,6 +8,7 @@ $cor-cinza: #cccccc;
 $cor-azul: #6699cc;
 $cor-verde: #4caf50;
 $cor-hot: #990000;
+$cor-hot-hover: #da0505;
 $cor-cool: #ac63bb;
 $cor-regular: #ffd700;
 $cor-underground: #cccccc;
@@ -116,8 +117,10 @@ ul, li{
         
         nav.search-selector{
             display: flex;
-            width: 400px;
-            padding: 10px;
+            width: 100%;
+            justify-content: center;
+            box-shadow: 2px 2px 6px $cor-preta;
+            padding: 6px 10px;
             margin:auto;
             ul{
                 margin: 0;
@@ -137,12 +140,13 @@ ul, li{
                     cursor: pointer;
                     transition: all ease 0.3s;
                     &:hover{
-                        color: $cor-verde;
-                        border-bottom: 2px solid $cor-verde;
+                      color: $cor-verde;
+                      border-bottom: 2px solid $cor-verde;
                     }
                 }
                 li.active{
-                    border-bottom: 2px solid $cor-verde;
+                  color: $cor-verde;
+                  border-bottom: 2px solid $cor-verde;
                 }
             }
         }
@@ -188,6 +192,14 @@ ul, li{
             ul{
                 display: flex;
                 flex-wrap: wrap;
+                overflow-y: auto;
+                &::-webkit-scrollbar {
+                  width: 6px;
+                  background-color: $cor-preta-secundaria;
+                } 
+                &::-webkit-scrollbar-thumb {
+                  background-color: $cor-preta-destaque;
+                }                
                 @media #{$mq-smartphones-portrait-landscape} {
                     justify-content: center;
                     align-items: center;
@@ -197,10 +209,33 @@ ul, li{
                 }                   
                 li{
                     display: flex;
+                    position: relative;
                     flex-direction: column;
                     height: 270px;
+                    .remove-button{
+                      display: none;
+                      position: absolute;
+                      cursor: pointer;
+                      background: $cor-hot;
+                      color: $cor-branca;
+                      top:24px;
+                      right: 0;
+                      justify-content: center;
+                      align-items: center;
+                      border-radius: 50%;
+                      width: 30px;
+                      height: 30px;
+                      transition: all ease 0.4s;
+                      &:hover{
+                        background: $cor-hot-hover;
+                      }
+                    }
+                    &:hover{
+                      .remove-button{
+                        display: flex;
+                      }
+                    }
                     a{
-
                       width: 200px;
                       height: 230px;
                       margin: 10px;
@@ -217,17 +252,17 @@ ul, li{
                           height: 200px;
                           box-shadow: 1px 1px 3px $cor-preta;
                           &:hover{
-                              .handle-favorite-button{
-                                  display: flex;
-                                  flex-direction: column;
-                                  cursor: pointer;
-                                  color: $cor-verde;
-                                  font-size: 0.9em;
-                                  i{
-                                   font-size: 1.6em;
-                                   margin-bottom: 10px;
-                                  }
+                            .handle-favorite-button{
+                              display: flex;
+                              flex-direction: column;
+                              cursor: pointer;
+                              color: $cor-verde;
+                              font-size: 0.9em;
+                              i{
+                                font-size: 1.6em;
+                                margin-bottom: 10px;
                               }
+                            }
                           }
                           @media #{$mq-smartphones-portrait-landscape} {
                               width: 100%;
@@ -235,23 +270,23 @@ ul, li{
                           }                          
                           
                           .handle-favorite-button{
-                              display: none;
-                              align-items: center;
-                              justify-content: center;
-                              position: absolute;
-                              width: 100%;
-                              height: 200px;
-                              top: 0;
-                              padding: 0;
-                              top: 0;
-                              left: 0;
-                              background: rgba(0, 0, 0, 0.8);
-                              z-index: 3000;
-                              color: $cor-branca;
-                              font-size: 6em;
+                            display: none;
+                            align-items: center;
+                            justify-content: center;
+                            position: absolute;
+                            width: 100%;
+                            height: 200px;
+                            top: 0;
+                            padding: 0;
+                            top: 0;
+                            left: 0;
+                            background: rgba(0, 0, 0, 0.8);
+                            z-index: 3000;
+                            color: $cor-branca;
+                            font-size: 6em;
                           }
                           img{
-                              width: 100%;
+                            width: 100%;
                           }
                     }
                     }
@@ -305,6 +340,7 @@ ul, li{
                 flex-direction: row !important;
                 justify-content: flex-start;
                 flex: auto;
+
                 li{
                     width: 40%;
                     height: 120px;
@@ -329,6 +365,7 @@ ul, li{
                           flex: none;
                       }
                       .album-info{
+                          width: 250px;
                           padding-left: 10px;
                           justify-content: flex-start;
                           text-align: left;
@@ -463,4 +500,15 @@ ul, li{
       }
     }
   }
+}
+
+.track-list-fix{
+  ul{
+    li{
+      width: 200px;
+      height: 255px;
+      margin: 5px;
+    }
+  }
+
 }

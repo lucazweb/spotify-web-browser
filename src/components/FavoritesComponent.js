@@ -6,10 +6,6 @@ import FavAlbumList from './FavAlbumList';
 import FavArtistsList from './FavArtistList';
 import FavTrackList from './FavArtistList';
 
-const handleFavoriteFilter = () => {
-
-}
-
 const FavoritesComponent = ({...props}) => (
   <div className="main-box main-box__favorites">
     <div className="results-box">
@@ -22,15 +18,15 @@ const FavoritesComponent = ({...props}) => (
       </nav>
 
       {
-        props.filter === 'artist' && (<FavArtistsList favorites={props.favorites} />)
+        props.filter === 'artist' && (<FavArtistsList remove={props.removeFromFavorites} favorites={props.favorites} />)
       }
 
       {
-        props.filter === 'album' && (<FavAlbumList favorites={props.favorites} />)
+        props.filter === 'album' && (<FavAlbumList remove={props.removeFromFavorites} favorites={props.favorites} />)
       }
 
       {
-        props.filter === 'track' && (<FavTrackList favorites={props.favorites} />)
+        props.filter === 'track' && (<FavTrackList remove={props.removeFromFavorites} favorites={props.favorites} />)
       }
     </div>  
   </div>

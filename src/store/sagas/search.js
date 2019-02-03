@@ -7,7 +7,7 @@ export function* getSearch(action) {
   try {
     const { data } = yield call(api.get, `/search?q=${action.payload.data.q}&type=${action.payload.data.filter}&access_token=${token}`);
     console.log(data);
-     yield put(searchSuccess(data));
+    yield put(searchSuccess(data));
   } catch (e) {
     yield put(searchFailure(e));
   }
