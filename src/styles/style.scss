@@ -2,6 +2,7 @@
 
 $cor-preta: #333333;
 $cor-preta-secundaria: #666666;
+$cor-preta-destaque: #020202;
 $cor-branca: white;
 $cor-cinza: #cccccc;
 $cor-azul: #6699cc;
@@ -71,18 +72,28 @@ ul, li{
                 padding: 0;
                 list-style: none;
                 li{
+                  margin-bottom: 10px;
+                  cursor: pointer;
+                  padding: 4px;
+                  &:hover{
+                    background: $cor-preta-destaque;
+                    a{
+                      color: $cor-branca;
+                    }
+                  }
+                  a{
                     cursor: pointer;
                     width: 100%;
                     color: $cor-cinza;
-                    font-size: 1em;
-                    margin-bottom: 10px;
+                    font-size: 1em;  
                     transition: all ease 0.4s;
-                    &:hover{
-                        color: $cor-branca;
-                    }
+                    text-decoration: none;
+              
                     i{
                         width: 25px;
                     }
+
+                  }
                 }
             }
         }
@@ -164,7 +175,7 @@ ul, li{
             }
         }
 
-        .album-list, .artists-list{
+        .album-list, .detail-items .album-list, .artists-list{
             display: flex;
             width: 100%;
             height: 80vh;
@@ -287,37 +298,110 @@ ul, li{
         .artists-list{
             ul{
                 flex-direction: row !important;
+                justify-content: flex-start;
+                flex: auto;
                 li{
                     width: 40%;
                     height: 120px;
                     flex-direction: row !important;
                     justify-content: flex-start;
-                    
-                    .album-image{
-                        width: 30%;
-                        height: 110px;
-                        box-shadow: none !important;
-                        overflow: hidden;
-                        img{
-                            border-radius: 100%;
-                        }
-                    }
-                    .album-info{
-                        padding-left: 10px;
-                        justify-content: flex-start;
-                        text-align: left;
-                        h2{
-                            margin-bottom: 4px;
-                        }
-                        span{
-                            margin-bottom: 3px;
-                        }
-                        .genres{
-                            color: $cor-cinza;
-                        }
+                    margin: 0;
+                    align-self: flex-start;
+  
+                    a{ // React Router Dom Link Fix
+                      width: 100%;
+                      height: 120px;
+                      display: flex;
+                      text-decoration: none;
+                      .album-image{
+                          width: 30%;
+                          height: 115px;
+                          border-radius: 50%;
+                          box-shadow: none !important;
+                          overflow: hidden;
+                          background-size: cover;
+                          background-position: center;
+                          flex: none;
+                      }
+                      .album-info{
+                          padding-left: 10px;
+                          justify-content: flex-start;
+                          text-align: left;
+                          h2{
+                              margin-bottom: 4px;
+                          }
+                          span{
+                              margin-bottom: 3px;
+                          }
+                          .genres{
+                              color: $cor-cinza;
+                          }
+                      }
                     }
                 }
             }
         }
+
+        // Artist Detail Component
+        .detail-box{
+          display: flex;
+          width: 100%;
+          .detail-selected{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding:6px;
+            width: 30%;
+            height: 100vh;
+            background: $cor-preta-destaque;
+            .album-image{
+              width: 200px;
+              height: 200px;
+              border-radius: 50%;
+              background-position: center;
+              background-size: cover;              
+            }
+            h2{
+              color: $cor-branca;
+              text-align: center;
+              font-size: 1em;
+              font-weight: normal;
+              margin-top: 3px;
+            }
+
+            span.rating{
+                font-size:0.8em;
+                text-align: center;
+                @media #{$mq-smartphones-portrait-landscape} {
+                    font-size: 1.2em;
+                }   
+            }
+            span.rating.hot{
+                color: $cor-hot;
+            }
+            span.rating.cool{
+                color: $cor-cool;
+            }
+            span.rating.regular{
+                color: $cor-regular;
+            }
+            span.rating.underground{
+                color: $cor-underground;
+            }
+
+          }
+
+          .detail-items{
+            display: flex;
+            flex-direction: column;
+            ul{
+              li{
+                margin: 5px;
+              }
+            }
+          }
+        }
+
     }
 }

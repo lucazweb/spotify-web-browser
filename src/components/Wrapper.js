@@ -6,6 +6,7 @@ import * as searchActions from '../store/actions/search';
 import createBrowserHistory from 'history/createBrowserHistory';
 import LoginView from '../views/LoginView'
 import Home from '../views/Home';
+import Artist from '../views/Artist';
 import api from '../services/api';
 
 const history = createBrowserHistory();
@@ -14,6 +15,7 @@ class Wrapper extends Component {
     componentDidMount(){
       const params = this.getHashParams();
       const token = params.access_token;
+      console.log(token);
       this.props.loginRequest(token);
       this.auth(token);
       this.isLogged();
@@ -58,6 +60,7 @@ class Wrapper extends Component {
               <Fragment>
                 <Route path='/' exact component={LoginView} />
                 <Route path='/home' render={() => this.isLogged() ? <Home /> : <Redirect to='/' /> } />
+                <Route path='/artist' component={Artist} />       
               </Fragment>
             </Router>
         )

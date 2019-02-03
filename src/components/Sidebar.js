@@ -1,13 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faStar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+
+const handleSessionEnd = () => {
+  sessionStorage.removeItem('x-access-token');
+  window.location = '/';
+}
 
 const Sidebar = () => (
   <div className="sidebar-component">
     <div className="sidebar-header"><h1>Spotify Browser</h1></div>
     <nav className="global-nav">
         <ul>
-            <li><i className="fas fa-search"></i> Search</li>
-            <li><i className="fas fa-star"></i> Favorites</li>
-            <li><i className="fas fa-sign-out-alt"></i> Logout</li>
+            <li><Link to='/home'><FontAwesomeIcon icon={faSearch} /> Search</Link></li>
+            <li><FontAwesomeIcon icon={faStar} /> Favorites</li>
+            <li onClick={() => handleSessionEnd()}><FontAwesomeIcon icon={faSignOutAlt} /> Logout</li>
         </ul>
     </nav>
 
