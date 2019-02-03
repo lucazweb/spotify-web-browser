@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as searchActions from '../store/actions/search';
 import { bindActionCreators } from 'redux';
-import { Pop } from 'react-preloading-component';
 import SearchSelector from './SearchSelector';
 import AlbumList from './AlbumList';
 import ArtistList from './ArtistList';
 import TrackList from './TrackList';
-
+import Placeholder from '../components/Placeholder';
+import Preloader from '../components/Preloader'
 const handleSearchRequest = (value, filter, searchRequest) => {
   if(value !== ''){
     searchRequest({q: value, filter: filter});
@@ -22,19 +22,25 @@ const SearchComponent = ({...props}) => (
     <div className="results-box">
       <SearchSelector />
       {
-        props.loading && (<Pop color='#4caf50' />)
+        props.loading && (<Preloader />)
       }
 
       {
-        ((props.data.artists !== undefined) && (props.filter === 'artist')) && (<ArtistList />)
+        ((!props.loading) && (props.data.length === 0)) 
+        && <Placeholder />
+      }
+
+
+      {
+        ((props.data.artists !== undefined) && (props.filter === 'artist') && (!props.loading)) && (<ArtistList />)
       }
       
       {
-        ((props.data.albums !== undefined) && (props.filter === 'album')) && (<AlbumList />)
+        ((props.data.albums !== undefined) && (props.filter === 'album') && (!props.loading)) && (<AlbumList />)
       }
 
       {
-        ((props.data.tracks !== undefined) && (props.filter === 'track')) && (<TrackList />)
+        ((props.data.tracks !== undefined) && (props.filter === 'track') && (!props.loading) ) && (<TrackList />)
       }
 
     </div>  
