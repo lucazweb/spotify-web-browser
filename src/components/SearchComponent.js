@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import SearchSelector from './SearchSelector';
 import AlbumList from './AlbumList';
 import ArtistList from './ArtistList';
+import TrackList from './TrackList';
 
 const SearchComponent = ({...props}) => (
   <div className="main-box">
@@ -19,6 +20,10 @@ const SearchComponent = ({...props}) => (
       
       {
         ((props.data.albums !== undefined) && (props.filter === 'album')) && (<AlbumList />)
+      }
+
+      {
+        ((props.data.tracks !== undefined) && (props.filter === 'track')) && (<TrackList />)
       }
 
     </div>  
