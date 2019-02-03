@@ -17,3 +17,8 @@ export const searchFailure = error => ({
     type: 'SEARCH_FAILURE',
     payload: { error },
 });
+
+export const changeFilter = data => ({
+    type: 'CHANGE_FILTER',
+    payload: { data },
+});
