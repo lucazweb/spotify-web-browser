@@ -1,8 +1,9 @@
 import React from 'react';
 import { PlaceHolderBox } from './styles';
+import spotify from './spotify_icon.svg';
 
-const Placeholder = () => (
-  <PlaceHolderBox> Browser Spotify Collection and have fun :)</PlaceHolderBox>
+const Placeholder = ({...props}) => (
+  <PlaceHolderBox> <img src={spotify} alt="Spotify" /> {props.msg}</PlaceHolderBox>
 );
 
 export default Placeholder;

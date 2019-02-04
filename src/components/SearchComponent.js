@@ -8,6 +8,7 @@ import ArtistList from './ArtistList';
 import TrackList from './TrackList';
 import Placeholder from '../components/Placeholder';
 import Preloader from '../components/Preloader'
+
 const handleSearchRequest = (value, filter, searchRequest) => {
   if(value !== ''){
     searchRequest({q: value, filter: filter});
@@ -27,7 +28,7 @@ const SearchComponent = ({...props}) => (
 
       {
         ((!props.loading) && (props.data.length === 0)) 
-        && <Placeholder />
+        && <Placeholder msg="Browser Spotify Collection and have fun :)" />
       }
 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Placeholder from './Placeholder';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMehBlank, faHeart, faFire, faThumbsUp, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -48,7 +49,7 @@ const FavAlbumList = ({...props}) => (
               }
           </div>
         </li>     
-      )) : <span> Nenhum album adicionado ainda</span>
+      )) : (<Placeholder msg="Try add your favorite Albums here" />)
     }
            
   </ul>

@@ -35,9 +35,13 @@ const handleFavorites = (payload, state) => {
       return newState;
     } 
   };
+
   if(payload.type === 'album'){
-    console.log('payload_type é album');
     return {...state, favorites: {...state.favorites, albuns: [...state.favorites.albuns, payload.favorite]}} 
+  };
+
+  if(payload.type === 'track'){
+    return {...state, favorites: {...state.favorites, tracks: [...state.favorites.tracks, payload.favorite]}} 
   };
 };
 
@@ -79,11 +83,11 @@ export default function (state = INITIAL_STATE, action){
 
     case 'SELECT_ARTIST_REQUEST':
       console.log(action.payload.data);
-      return state;
+      return {...state, loading: true};
 
     case 'SELECT_ARTIST_SUCCESS':
       console.log(action.payload.data);
-      return {...state, selectedArtist: action.payload.data}
+      return {...state, loading: false, selectedArtist: action.payload.data}
 
     case 'SELECT_ARTIST_FAILURE':
       console.log(action.payload.data);

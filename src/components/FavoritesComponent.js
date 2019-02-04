@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as searchActions from '../store/actions/search';
 import FavAlbumList from './FavAlbumList';
 import FavArtistsList from './FavArtistList';
-import FavTrackList from './FavArtistList';
+import FavTrackList from './FavTrackList';
 
 const FavoritesComponent = ({...props}) => (
   <div className="main-box main-box__favorites">

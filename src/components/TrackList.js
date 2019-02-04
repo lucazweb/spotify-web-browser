@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as searchActions from '../store/actions/search';
 import { bindActionCreators } from 'redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const handleArtists = (arr, artist, index) => {
   if(index === arr.length - 1){
@@ -24,6 +26,7 @@ const TrackList = ({...props}) => (
             {
               track.album.images ? handleTrackImage(track.album.images[0].url) : (<img alt="static" src={track.album.images[0].url} />)
             } 
+          <div onClick={() => props.addAsFavorite({favorite: track, type: 'track'})} className="handle-favorite-track-button"> <span> <FontAwesomeIcon icon={faStar} />Add as Favorite</span></div>
           <div className="album-info">
               <h2>{track.name}</h2>
               {
