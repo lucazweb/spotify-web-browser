@@ -31,7 +31,6 @@ const SearchComponent = ({...props}) => (
         && <Placeholder msg="Browser Spotify Collection and have fun :)" />
       }
 
-
       {
         ((props.data.artists !== undefined) && (props.filter === 'artist') && (!props.loading)) && (<ArtistList />)
       }

@@ -18,7 +18,6 @@ class Wrapper extends Component {
       const params = this.getHashParams();
       const token = params.access_token;
       if(token !== null){
-        //this.props.loginRequest(token);
         this.auth(token);
         this.isLogged();
       }
@@ -65,9 +64,9 @@ class Wrapper extends Component {
               <Fragment>
                 <Route path='/' exact component={LoginView} />
                 <Route path='/home' render={() => this.isLogged() ? <Home /> : <Redirect to='/' /> } />
-                <Route path='/artist' component={Artist} />
-                <Route path='/album' component={Album} />
-                <Route path='/favorites' component={Favorites} />
+                <Route path='/artist' render={() => this.isLogged() ? <Artist /> : <Redirect to='/' /> } />
+                <Route path='/album' render={() => this.isLogged() ? <Album /> : <Redirect to='/' /> } />
+                <Route path='/favorites' render={() => this.isLogged() ? <Favorites /> : <Redirect to='/' /> } />
               </Fragment>
             </Router>
         )

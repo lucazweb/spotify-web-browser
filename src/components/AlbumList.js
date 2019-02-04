@@ -1,4 +1,5 @@
 import React from 'react';
+import Placeholder from './Placeholder';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as searchActions from '../store/actions/search';
@@ -9,7 +10,7 @@ const AlbumList = ({...props}) => (
   <ul>
     {
       ((props.data.albums !== undefined)) ? ( props.data.albums.items.map(album => (
-        <li>
+        <li key={album.id}>
           <Link to='/album' onClick={() => props.selectAlbumReq(album.id)}>
             <div className="album-image">
                 <div className="handle-favorite-button">
@@ -30,19 +31,16 @@ const AlbumList = ({...props}) => (
           </Link>
         </li>  
       ))
-      ) : <p>Sem albums a exibir</p>
+      ) : (<Placeholder msg="No Albums to list" />)
     }
   </ul>
 </div>
 );
 
-const mapStateToProps = function(state){
-  console.log(state);
-  return{
-    filter: state.search.filter,
-    data: state.search.data,
-  }
-}
+const mapStateToProps = (state) => ({
+  filter: state.search.filter,
+  data: state.search.data,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators(searchActions, dispatch);
 

@@ -6,7 +6,6 @@ export function* getSearch(action) {
   let token = sessionStorage.getItem('x-access-token');
   try {
     const { data } = yield call(api.get, `/search?q=${action.payload.data.q}&type=${action.payload.data.filter}&access_token=${token}`);
-    console.log(data);
     yield put(searchSuccess(data));
   } catch (e) {
     yield put(searchFailure(e));
@@ -31,7 +30,6 @@ export function* getAlbum(action) {
     const { data } = yield call(api.get, `/albums/${action.payload.data}?access_token=${token}`);
     const tracksResponse = yield call(api.get, `/albums/${action.payload.data}/tracks/?access_token=${token}`);
     data.tracks = tracksResponse;
-    // data.track = albumsRespose.data;
     yield put(selectAlbumSuccess(data));
   } catch (e) {
     yield put(selectAlbumFailure(e));

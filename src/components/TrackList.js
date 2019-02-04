@@ -22,7 +22,7 @@ const TrackList = ({...props}) => (
   <ul>
     {
       ((props.data.tracks !== undefined)) ? ( props.data.tracks.items.map(track => (
-        <li>
+        <li key={track.id}>
             {
               track.album.images ? handleTrackImage(track.album.images[0].url) : (<img alt="static" src={track.album.images[0].url} />)
             } 
@@ -34,7 +34,6 @@ const TrackList = ({...props}) => (
                 ? (<span> { track.artists.map((artist, index) => ( handleArtists(track.artists, artist, index)))} </span>) 
                 : (<span>{track.artists[0].name}</span>)
               }
-              <span className="rating hot"><i className="fas fa-fire"></i>Hot</span>
           </div>
         </li>  
       ))

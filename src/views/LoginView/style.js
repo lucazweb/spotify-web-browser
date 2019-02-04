@@ -13,8 +13,9 @@ export const LoginContainer = styled.div`
 
 export const LoginLabel = styled.h1`
     color: #cccccc;
-    font-family: sans-serif;
     font-size: 1.4em;
+    font-family: 'Sarabun', sans-serif;
+    font-weight: normal;
 `;
 
 export const LoginButton = styled.a`
@@ -34,6 +35,7 @@ export const LoginButton = styled.a`
     border: 1px solid transparent;
     padding: 8px 12px;
     font-size: 16px;
+    font-family: 'Sarabun', sans-serif;
     line-height: 1.42857143;
     border-radius: 35px;
     -webkit-user-select: none;
@@ -51,7 +53,7 @@ export const LoginButton = styled.a`
     img{
       width: 30px;
       height: 30px;
-      margin-right: 20px;
+      margin-right: 12px;
     }
 
 `;

@@ -51,7 +51,7 @@ const ArtistDetail = ({...props}) => (
               <ul>
                 {
                   props.selectedArtist.albums && props.selectedArtist.albums.items.slice(0, 5).map(album => (
-                    <li>
+                    <li key={album.id}>
                       {
                         album.images[0] ? 
                         (handleArtirstImage(album.images[0].url))

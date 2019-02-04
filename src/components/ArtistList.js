@@ -8,21 +8,20 @@ import { faMehBlank, faHeart, faFire, faThumbsUp } from '@fortawesome/free-solid
 
 const handlePopularity = (popularity) => {
  if(popularity < 30){
-    return (<span className="rating underground"><FontAwesomeIcon icon={faMehBlank}/> Underground</span>)
+  //Underground
+  return (<span className="rating underground"><FontAwesomeIcon icon={faMehBlank}/> Underground</span>)
  }
 
  if((popularity > 30) && (popularity < 59)){
-   // Regular
-   return (<span className="rating regular"><FontAwesomeIcon icon={faThumbsUp}/> Regular</span>)
+  // Regular
+  return (<span className="rating regular"><FontAwesomeIcon icon={faThumbsUp}/> Regular</span>)
  }
 
  if((popularity >= 60) && (popularity < 80)){
-   // Coll
-   return (<span className="rating cool"><FontAwesomeIcon icon={faHeart}/> Cool</span>)
+  // Coll
+  return (<span className="rating cool"><FontAwesomeIcon icon={faHeart}/> Cool</span>)
  }
- 
  return (<span className="rating hot"><FontAwesomeIcon icon={faFire}/> Hot</span>)
-
 }
 
 const unknowAvatar = './assets/unknow.jpg';
@@ -33,11 +32,11 @@ const handleArtirstImage = (url) => {
 
 const handleArtirstGenres = (arr, genre, index) => {
   if(index === arr.length - 1){
-    return genre;
+    return (<Fragment key={`${genre}${index}`}>{genre}</Fragment>);
   }else{
     return `${genre}, `
   }
-}
+};
 
 const ArtistList = ({...props}) => (
   <div className="artists-list">
@@ -54,15 +53,13 @@ const ArtistList = ({...props}) => (
 
             <div className="album-info">
                 <h2>{artirst.name}</h2>
-                
                 <span className="genres">
                   {
                     artirst.genres.map((genre, index) => (
-                      <Fragment>{handleArtirstGenres(artirst.genres, genre, index)}</Fragment>
+                      <Fragment key={genre}>{handleArtirstGenres(artirst.genres, genre, index)}</Fragment>
                     ))
                   }
                 </span>
-                
                 {
                   handlePopularity(artirst.popularity)
                 }
@@ -71,18 +68,14 @@ const ArtistList = ({...props}) => (
         </li>
         )) : <span>Sem artistas a exibir</span>
       }
-
     </ul>
 </div>
 );
 
-const mapStateToProps = function(state){
-  console.log(state);
-  return{
-    filter: state.search.filter,
-    data: state.search.data,
-  }
-}
+const mapStateToProps = (state) => ({
+  filter: state.search.filter,
+  data: state.search.data,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators(searchActions, dispatch);
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Placeholder from './Placeholder';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMehBlank, faHeart, faFire, faThumbsUp, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,8 +29,8 @@ const FavArtistList = ({...props}) => (
   <ul>
     {
       props.favorites.artists.length > 0 ? props.favorites.artists.map(artist => (
-        <li>
-          <div onClick={() => props.remove({id: artist.id, type: 'artist'})} class="remove-button"> <FontAwesomeIcon icon={faTimes}/> </div>
+        <li key={artist.id}>
+          <div onClick={() => props.remove({id: artist.id, type: 'artist'})} className="remove-button"> <FontAwesomeIcon icon={faTimes}/> </div>
           {
             artist.images ? (handleArtirstImage(artist.images[0].url)) : (<span> Sem imagem</span>)
           }
@@ -41,7 +42,7 @@ const FavArtistList = ({...props}) => (
               }
           </div>
         </li>     
-      )) : <span> Nenhum album adicionado ainda</span>
+      )) : (<Placeholder msg="Your Artist library is empty" />)
     }
            
   </ul>

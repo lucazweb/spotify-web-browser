@@ -1,7 +1,6 @@
 import { all, takeLatest } from 'redux-saga/effects';
 import { getSearch, getArtist, getAlbum} from './search';
 
-
 export default function* rootSaga() {
     yield all([
       takeLatest('SEARCH_REQUEST', getSearch),

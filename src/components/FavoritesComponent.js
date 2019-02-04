@@ -32,13 +32,10 @@ const FavoritesComponent = ({...props}) => (
   </div>
 );
 
-const mapStateToProps = function(state){
-  console.log(state);
-  return{
-    favorites: state.search.favorites,
-    filter: state.search.filter,
-  }
-};
+const mapStateToProps = (state) => ({
+  favorites: state.search.favorites,
+  filter: state.search.filter,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators(searchActions, dispatch);
 
